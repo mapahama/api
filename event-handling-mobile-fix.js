@@ -45,9 +45,11 @@ mic.addEventListener('click', () => {
   " use the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + 
   "Paper" + "</span></b>" + " to find scientific articles!";
 
-      speech.text = "Hello";
+
       notchat.style.display = "none";
       
+      let result = "hello";
+      speech.text = result;
       window.speechSynthesis.speak(speech);
       messages_area.append(assistantSpeak(appWakeWords));
       messages_area.append(assistantSpeak(speech.text));
