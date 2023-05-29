@@ -55,9 +55,10 @@ mic.addEventListener('click', () => {
       speech.text = result;
       notchat.style.display = "none";
       
+      window.speechSynthesis.speak(speech);
       messages_area.append(assistantSpeak(appWakeWords));
       messages_area.append(assistantSpeak(speech.text));
-      window.speechSynthesis.speak(speech);
+      //window.speechSynthesis.speak(speech);
 
       //start recognition
       setTimeout(function() {
