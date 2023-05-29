@@ -111,19 +111,24 @@ function assistantMsg(msg){
                 speech.text = "as you wish";  
                 gptResponse = false;          
             } 
-            else if (msg.toLowerCase().includes('okay stop')|| msg.toLowerCase().includes('Api stop')) {
+            else if (msg.toLowerCase().includes('okay stop')) {
                 speech.text = "API is turning off...";  
                 recognition.continuous = false;
                 gptResponse = false;  
                 stop = true;
                 recognition.stop(); 
                 mic.style.pointerEvents = "";   
+
             } 
 
             else if (msg.toLowerCase().includes('yes')) {
                 myTimer();
-                speech.text = wikiSummary;  
-                gptResponse = false;           
+                messages_area.append(assistantSpeak(wikiSummary));
+                readLongText(wikiSummary);
+                //speech.text = wikiSummary;  
+                gptResponse = false;  
+                return;         
+
             } 
     
             else if (msg.toLowerCase().includes('wikipedia')) {
@@ -293,7 +298,10 @@ function myTimer() {
     myTimeout = setTimeout(myTimer, 10000);
 }
 
-//divide long texts, not used yet
+/*
+* Divide long wikipedia texts in 2 parts. In order to avoid interruptions.
+* @param text: the wikipedia text to be read aloud
+*/
 function readLongText(text) {
     // Split the text in two parts
     const middleIndex = Math.ceil(text.length / 2);
@@ -303,7 +311,9 @@ function readLongText(text) {
     // Create a new SpeechSynthesisUtterance object for each part
     const firstUtterance = new SpeechSynthesisUtterance(firstPart);
     const secondUtterance = new SpeechSynthesisUtterance(secondPart);
-  
+
+    firstUtterance.voice = speech.voice;
+    secondUtterance.voice= speech.voice;
     // Add an event listener to the first utterance to start the second one when it finishes
     firstUtterance.addEventListener("end", () => {
       window.speechSynthesis.speak(secondUtterance);
