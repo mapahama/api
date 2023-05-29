@@ -121,7 +121,7 @@ function assistantMsg(msg){
 
             } 
 
-            else if (msg.toLowerCase().includes('yes')) {
+            else if (msg.toLowerCase().includes('yes please')) {
                 myTimer();
                 messages_area.append(assistantSpeak(wikiSummary));
                 readLongText(wikiSummary);
@@ -311,17 +311,21 @@ function readLongText(text) {
     // Create a new SpeechSynthesisUtterance object for each part
     const firstUtterance = new SpeechSynthesisUtterance(firstPart);
     const secondUtterance = new SpeechSynthesisUtterance(secondPart);
-    firstUtterance.rate =0.85;
-    secondUtterance.rate=0.85;
 
-    speech.rate = 0.8;
     firstUtterance.voice = speech.voice;
     secondUtterance.voice= speech.voice;
-    // Add an event listener to the first utterance to start the second one when it finishes
-    firstUtterance.addEventListener("end", () => {
-      window.speechSynthesis.speak(secondUtterance);
-    });
+    firstUtterance.rate = 0.85;
+    secondUtterance.rate = 0.85;
+
   
     // Start reading the first utterance
     window.speechSynthesis.speak(firstUtterance);
+
+    // Add an event listener to the first utterance to start the second one when it finishes
+    firstUtterance.addEventListener("end", () => {
+        window.speechSynthesis.speak(secondUtterance);
+    });
+    secondUtterance.addEventListener("end", () => {
+        recognition.start();
+    });
 }
