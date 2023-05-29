@@ -125,12 +125,12 @@ speech.addEventListener('end', (event) => {
 /*
 * Removing SpeechRecognition when SpeechSynthesis starts.
 */
-//speech.addEventListener('start', (event) => {
+speech.addEventListener('start', (event) => {
 
-  //console.log("on start speech event" + event);
-  //myTimeout = setTimeout(myTimer, 10000);
-  //recognition.removeEventListener('result', handleSpeechRecognition);
-//});
+  console.log("on start speech event" + event);
+  myTimeout = setTimeout(myTimer, 10000);
+  recognition.removeEventListener('result', handleSpeechRecognition);
+});
 
 
 /*
