@@ -48,7 +48,7 @@ mic.addEventListener('click', () => {
 
       notchat.style.display = "none";
       
-      let result = "hello";
+      let result = "helloo";
       speech.text = result;
       window.speechSynthesis.speak(speech);
       messages_area.append(assistantSpeak(appWakeWords));
