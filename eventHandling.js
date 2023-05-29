@@ -63,6 +63,8 @@ mic.addEventListener('click', () => {
       setTimeout(function() {
           recognition.start(); 
       }, 2000);
+    
+    stop =false;
   }
 });
 
