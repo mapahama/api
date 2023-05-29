@@ -75,9 +75,6 @@ recognition.onend = function() {
 
   console.log("ended...");
   iteration = 0;
-  if(!stop){
-    recognition.start();
-  }
 }
 
 /*
@@ -120,7 +117,10 @@ speech.addEventListener('end', (event) => {
 
     recognition.addEventListener('result', handleSpeechRecognition);          
   }, 1700); 
-  recognition.start();
+
+  if(!stop){
+    recognition.start();
+  }
 });
 
 /*
