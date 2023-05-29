@@ -249,6 +249,9 @@ button.active{
   .box{
     width: 30%;
   }
+  .box .messages_area {
+    height: 22.5rem;
+  }
 }
 
 
