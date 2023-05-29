@@ -118,7 +118,6 @@ function assistantMsg(msg){
                 stop = true;
                 recognition.stop(); 
                 mic.style.pointerEvents = "";   
-                stop = false;    
             } 
 
             else if (msg.toLowerCase().includes('yes')) {
