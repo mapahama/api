@@ -1,0 +1,35 @@
+
+/*
+* Retrieves the text from a wikipedia article.
+* @param wordUrl1: the URL of the wiki article
+*
+*/
+async function askForWikiSummary(wordUrl1){
+    
+  await fetch(wordUrl1)
+  .then(response => response.json())
+  .then(response =>{
+      response = response.query.pages;
+      var pageid = Object.keys(response)[0];
+      var extract = response[pageid].extract;
+  
+      if(extract !== undefined){
+        console.log(extract);
+        
+        wikiSummary = extract;
+        const ifMoreInfoNeeded = "would you like to read the information for you?";
+        speech.text = ifMoreInfoNeeded;
+        messages_area.append(assistantSpeak(ifMoreInfoNeeded));
+        window.speechSynthesis.speak(speech);         
+      } else {
+
+        wikiSummary ="Sorry, I did not find information";
+        speech.text = wikiSummary;
+        messages_area.append(assistantSpeak(wikiSummary));
+        window.speechSynthesis.speak(speech);  
+
+        console.log(wikiSummary);
+      }
+  })
+  .catch(error => console.error(error));       
+}

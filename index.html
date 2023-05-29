@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>assistant in javascript</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="box">
+      <div class="title_div">
+        <img id="assistant" src="hi-robot.gif" alt="assistant picture" />
+        <h2>Personal Assistant</h2>
+      </div>
+      <div class="voice-changer">
+        <button class="female active">
+          Female Voice
+        </button>  
+        <button class="male inactive">
+          Male Voice
+        </button>  
+      </div>
+
+      <hr />
+      <div class="messages_area">
+        <span id="notchat">No Conversation found...</span>
+          <div class="chats">
+        </div>
+      </div>
+      <hr />
+      <img src="mic.png" id="mic" alt="mic" />
+    </div>
+
+    <script src="script.js"></script> 
+    <script src="answers.js"></script>
+    <script src="gptTurbo.js"></script>
+    <script src="eventHandling.js"></script>
+    <script src="wikiSummary.js"></script>
+
+
+  </body>
+</html>
