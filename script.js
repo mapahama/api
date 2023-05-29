@@ -312,6 +312,7 @@ function readLongText(text) {
     const firstUtterance = new SpeechSynthesisUtterance(firstPart);
     const secondUtterance = new SpeechSynthesisUtterance(secondPart);
 
+    speech.rate = 0.8;
     firstUtterance.voice = speech.voice;
     secondUtterance.voice= speech.voice;
     // Add an event listener to the first utterance to start the second one when it finishes
