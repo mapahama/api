@@ -311,6 +311,8 @@ function readLongText(text) {
     // Create a new SpeechSynthesisUtterance object for each part
     const firstUtterance = new SpeechSynthesisUtterance(firstPart);
     const secondUtterance = new SpeechSynthesisUtterance(secondPart);
+    firstUtterance.rate =0.85;
+    secondUtterance.rate=0.85;
 
     speech.rate = 0.8;
     firstUtterance.voice = speech.voice;
