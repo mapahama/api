@@ -111,7 +111,7 @@ function assistantMsg(msg){
                 speech.text = "as you wish";  
                 gptResponse = false;          
             } 
-            else if (msg.toLowerCase().includes('okay stop')) {
+            else if (msg.toLowerCase().includes('okay stop')||msg.toLowerCase().includes('ok stop')) {
                 speech.text = "API is turning off...";  
                 recognition.continuous = false;
                 gptResponse = false;  
@@ -121,7 +121,7 @@ function assistantMsg(msg){
 
             } 
 
-            else if (msg.toLowerCase().includes('yes please')) {
+            else if (msg.toLowerCase().includes('yes please')||msg.toLowerCase().includes('yes')) {
                 myTimer();
                 messages_area.append(assistantSpeak(wikiSummary));
                 readLongText(wikiSummary);
