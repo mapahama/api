@@ -44,6 +44,7 @@ mic.addEventListener('click', () => {
   "</span></b>" + ", followed by the info you need. If you are a Smartie," + 
   " use the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + 
   "Paper" + "</span></b>" + " to find scientific articles!";
+  
   var isSpeaking = window.speechSynthesis.speaking;
 
   //check if the assistant is speaking
@@ -52,6 +53,8 @@ mic.addEventListener('click', () => {
       notchat.style.display = "none"; 
      
       let result = saluteToDaytime();
+
+      
       speech.text = result;
 
       messages_area.append(assistantSpeak(appWakeWords));
@@ -59,9 +62,9 @@ mic.addEventListener('click', () => {
       window.speechSynthesis.speak(speech);
 
       //start recognition
-     // setTimeout(function() {
-     //     recognition.start(); 
-      //}, 2000);
+      setTimeout(function() {
+          recognition.start(); 
+      }, 1000);
 
       stop = false;    
   }
