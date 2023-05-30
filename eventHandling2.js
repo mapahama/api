@@ -59,8 +59,8 @@ mic.addEventListener('click', () => {
 
       messages_area.append(assistantSpeak(appWakeWords));
       messages_area.append(assistantSpeak(speech.text));
-      window.speechSynthesis.speak(speech);
-
+      //window.speechSynthesis.speak(speech);
+      main();
       //start recognition
       //setTimeout(function() {
      //    recognition.start(); 
