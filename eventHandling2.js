@@ -1,5 +1,4 @@
 
-
 /*
 * Handling event click on maleBtn.
 */
@@ -81,6 +80,7 @@ recognition.onend = function() {
 * Handling event SpeechRecognition start. 
 */
 recognition.onstart = function(){
+
   mic.style.pointerEvents = "none";
   window.speechSynthesis.cancel();
   iteration++;     
@@ -121,6 +121,7 @@ speech.addEventListener('end', (event) => {
   if(!stop){
     recognition.start();
   }
+
 });
 
 /*
@@ -130,7 +131,7 @@ speech.addEventListener('start', (event) => {
 
   console.log("on start speech event" + event);
   myTimeout = setTimeout(myTimer, 10000);
-  stop =true;
+  //stop =true;
   recognition.stop();
   recognition.removeEventListener('result', handleSpeechRecognition);
 
