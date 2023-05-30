@@ -4,7 +4,6 @@ const chats = document.querySelector('.chats');
 const notchat = document.getElementById('notchat');
 const femaleBtn = document.querySelector(".female");
 const maleBtn = document.querySelector(".male");
-const speech = new SpeechSynthesisUtterance();
 
 let iteration = 0;
 let recognition = null;
@@ -14,6 +13,7 @@ let askedWikiInformation = false;
 let wordUrl1 = null;
 let wikiSummary = null;
 
+var speech = new SpeechSynthesisUtterance();
 var gptResponse = false;
 var paperIDnumber = 0;
 var paperNumber = null;
@@ -92,7 +92,7 @@ function assistantMsg(msg){
         alert("Please use Chrome browser!");
 
     } else {
-
+        
         if (msg.trim().length !== 0){
 
             if (msg.toLowerCase().includes('who are you') || msg.toLowerCase().includes('what is your name')) {
@@ -329,3 +329,4 @@ function readLongText(text) {
         recognition.start();
     });
 }
+
