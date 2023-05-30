@@ -13,7 +13,8 @@ let askedWikiInformation = false;
 let wordUrl1 = null;
 let wikiSummary = null;
 
-var speech = new SpeechSynthesisUtterance();
+var synth = window.speechSynthesis;
+var speech = new SpeechSynthesisUtterance("");
 var gptResponse = false;
 var paperIDnumber = 0;
 var paperNumber = null;
@@ -100,13 +101,20 @@ function assistantMsg(msg){
                 speech.text = result;
                 gptResponse = false;
             }
-        
+            else if (msg.toLowerCase().includes('yes') || msg.toLowerCase().includes('yes please')) {
+                myTimer();
+                messages_area.append(assistantSpeak(wikiSummary));
+                readLongText(wikiSummary);
+                //speech.text = wikiSummary;  
+                gptResponse = false;  
+                return;         
+
+            }
             else if (msg.toLowerCase().includes('thank you')) {
                 const result = thanks[Math.floor(Math.random() * thanks.length)];
                 speech.text = result;
                 gptResponse = false;
             }
-        
             else if (msg.toLowerCase().includes('no')) {
                 speech.text = "as you wish";  
                 gptResponse = false;          
@@ -120,17 +128,6 @@ function assistantMsg(msg){
                 mic.style.pointerEvents = "";   
 
             } 
-
-            else if (msg.toLowerCase().includes('yes please') || msg.toLowerCase().includes('yes')) {
-                myTimer();
-                messages_area.append(assistantSpeak(wikiSummary));
-                readLongText(wikiSummary);
-                //speech.text = wikiSummary;  
-                gptResponse = false;  
-                return;         
-
-            } 
-    
             else if (msg.toLowerCase().includes('wikipedia')) {
                 // if the user says  "wikipedia Paris",  the word "wikipedia" is REPLACED with empty string and only
                 // the word Paris is taken into account
@@ -141,7 +138,7 @@ function assistantMsg(msg){
                 gptResponse = false;
 
                 messages_area.append(assistantSpeak(result));
-                window.speechSynthesis.speak(speech);
+                synth.speak(speech);
 
                 // providing the endpoint with the text for the asked wikipedia article
                 let word = msg.toLowerCase().replace("wikipedia", "");
@@ -163,7 +160,6 @@ function assistantMsg(msg){
                 window.open(`http://google.com/search?q=${msg}`, "_blank");
                 gptResponse = false;
             }  
-
             // looking up for papers in SemanticScholar
             else if (msg.toLowerCase().includes(('paper')) || msg.toLowerCase().includes(('people')))  {
                 if(msg.toLowerCase().includes(('paper'))){
@@ -199,17 +195,15 @@ function assistantMsg(msg){
                 gptResponse = false;
                 paperBoolean = true;
             } 
-
             else {
                 gptResponse = true;
             }
-    
             if(!gptResponse){
 
                 // all functions to be spoken by the assistant, except paper search
                 if(!paperBoolean){
                     messages_area.append(assistantSpeak(speech.text));
-                    window.speechSynthesis.speak(speech);
+                    synth.speak(speech);
 
                 // only paper search option to be spoken by the assistant
                 } else {
@@ -238,7 +232,7 @@ function assistantMsg(msg){
                                 } 
                             } 
                             speech.text = result;
-                            window.speechSynthesis.speak(speech);
+                            synth.speak(speech);
 
                         }, 2000) 
  
@@ -253,10 +247,10 @@ function assistantMsg(msg){
                 var result2 =  await getGPTmessage(msg);
                     
                 messages_area.append(assistantSpeak(result2));
-                window.speechSynthesis.cancel();
+                synth.cancel();
 
                 speech.text = result2;
-                window.speechSynthesis.speak(speech);
+                synth.speak(speech);
                 }
 
                 anotherAsyncFunction();
@@ -293,8 +287,8 @@ function assistantMsg(msg){
 * Pause and resume speech-synthesis every 10 sec to avoid speech-synthesis errors in long texts.
 */
 function myTimer() {
-    window.speechSynthesis.pause();
-    window.speechSynthesis.resume();
+    synth.pause();
+    synth.resume();
     myTimeout = setTimeout(myTimer, 10000);
 }
 
@@ -319,11 +313,11 @@ function readLongText(text) {
 
   
     // Start reading the first utterance
-    window.speechSynthesis.speak(firstUtterance);
+    synth.speak(firstUtterance);
 
     // Add an event listener to the first utterance to start the second one when it finishes
     firstUtterance.addEventListener("end", () => {
-        window.speechSynthesis.speak(secondUtterance);
+        synth.speak(secondUtterance);
     });
     secondUtterance.addEventListener("end", () => {
         recognition.start();
