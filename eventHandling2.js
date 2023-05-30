@@ -62,9 +62,9 @@ mic.addEventListener('click', () => {
       window.speechSynthesis.speak(speech);
 
       //start recognition
-      setTimeout(function() {
-          recognition.start(); 
-      }, 1000);
+      //setTimeout(function() {
+     //    recognition.start(); 
+      //}, 1000);
 
       stop = false;    
   }
