@@ -44,30 +44,26 @@ mic.addEventListener('click', () => {
   "</span></b>" + ", followed by the info you need. If you are a Smartie," + 
   " use the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + 
   "Paper" + "</span></b>" + " to find scientific articles!";
-  
-  var isSpeaking = window.speechSynthesis.speaking;
 
-  //check if the assistant is speaking
-  if (!isSpeaking){
-      console.log("Listening...");
-      notchat.style.display = "none"; 
+  recognition = new SpeechRecognition();
+  synth = window.speechSynthesis;
+  synth.cancel
+  //speech = new SpeechSynthesisUtterance("hi");
+
+  console.log("Listening...");
+  notchat.style.display = "none"; 
      
-      let result = saluteToDaytime();
+  let result = saluteToDaytime();
 
-      
-      speech.text = result;
+  //speech = new SpeechSynthesisUtterance(result);
+  speech.text = result;
 
-      messages_area.append(assistantSpeak(appWakeWords));
-      messages_area.append(assistantSpeak(speech.text));
-      //window.speechSynthesis.speak(speech);
-      main();
-      //start recognition
-      //setTimeout(function() {
-     //    recognition.start(); 
-      //}, 1000);
+  messages_area.append(assistantSpeak(appWakeWords));
+  messages_area.append(assistantSpeak(speech.text));
+  synth.speak(speech);
 
-      stop = false;    
-  }
+  stop = false;    
+  
 });
 
 /*
@@ -83,9 +79,8 @@ recognition.onend = function() {
 * Handling event SpeechRecognition start. 
 */
 recognition.onstart = function(){
-
   mic.style.pointerEvents = "none";
-  window.speechSynthesis.cancel();
+  synth.cancel();
   iteration++;     
 }
 
@@ -110,7 +105,7 @@ speech.addEventListener('end', (event) => {
 
   //stop = false;
   setTimeout(function() {
-    window.speechSynthesis.cancel();
+    synth.cancel();
     console.log("on end speech event" + event);
 
     if(askedWikiInformation){ 
@@ -147,7 +142,7 @@ speech.addEventListener('start', (event) => {
 function handleSpeechRecognition(event) {
 
   console.log("recognition event: " + event);
-  var isSpeaking = window.speechSynthesis.speaking;
+  var isSpeaking = synth.speaking;
 
   //check if the assistant is speaking
   if (!isSpeaking){
@@ -166,3 +161,4 @@ function handleSpeechRecognition(event) {
       event.results[event.resultIndex][0].transcript = '';
   }
 }
+
