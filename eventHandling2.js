@@ -59,9 +59,9 @@ mic.addEventListener('click', () => {
       window.speechSynthesis.speak(speech);
 
       //start recognition
-      setTimeout(function() {
-          recognition.start(); 
-      }, 2000);
+     // setTimeout(function() {
+     //     recognition.start(); 
+      //}, 2000);
 
       stop = false;    
   }
@@ -105,7 +105,7 @@ recognition.onerror = function(event) {
 */
 speech.addEventListener('end', (event) => {
 
-  stop = false;
+  //stop = false;
   setTimeout(function() {
     window.speechSynthesis.cancel();
     console.log("on end speech event" + event);
