@@ -136,7 +136,6 @@ speech.addEventListener('start', (event) => {
   recognition.removeEventListener('result', handleSpeechRecognition);
 });
 
-
 /*
 * Recognizing the users utterance and converting it into text in the chat window.
 */
