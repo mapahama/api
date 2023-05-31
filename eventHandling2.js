@@ -48,20 +48,20 @@ mic.addEventListener('click', () => {
   recognition = new SpeechRecognition();
   synth = window.speechSynthesis;
   synth.cancel
+
   //speech = new SpeechSynthesisUtterance("hi");
 
   console.log("Listening...");
   notchat.style.display = "none"; 
+  mic.style.pointerEvents = "none"; 
      
   let result = saluteToDaytime();
-
-  //speech = new SpeechSynthesisUtterance(result);
   speech.text = result;
 
   messages_area.append(assistantSpeak(appWakeWords));
   messages_area.append(assistantSpeak(speech.text));
   synth.speak(speech);
-
+  
   stop = false;    
   
 });
@@ -108,6 +108,7 @@ speech.addEventListener('end', (event) => {
     synth.cancel();
     console.log("on end speech event" + event);
 
+
     if(askedWikiInformation){ 
       askForWikiSummary(wordUrl1);
       askedWikiInformation = false; 
@@ -115,12 +116,13 @@ speech.addEventListener('end', (event) => {
 
     recognition.addEventListener('result', handleSpeechRecognition);          
   }, 1700); 
-
+  
   if(!stop){
     recognition.start();
-  }
+  }       
 
 });
+
 
 /*
 * Removing SpeechRecognition when SpeechSynthesis starts.
@@ -161,4 +163,3 @@ function handleSpeechRecognition(event) {
       event.results[event.resultIndex][0].transcript = '';
   }
 }
-
