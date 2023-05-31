@@ -120,7 +120,7 @@ speech.addEventListener('end', (event) => {
     }
 
     recognition.addEventListener('result', handleSpeechRecognition);          
-  }, 700); 
+  }, 1000); 
 
 });
 
