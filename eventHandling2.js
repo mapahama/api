@@ -63,7 +63,7 @@ mic.addEventListener('click', () => {
   //start recognition
   setTimeout(function() {
       recognition.start(); 
-  }, 1000);
+  }, 500);
 
   stop = false;    
   
@@ -77,6 +77,9 @@ recognition.onend = function() {
   console.log("ended...");
   iteration = 0;
 
+  if(!stop){
+    recognition.start();
+  }
 }
 
 /*
@@ -117,7 +120,7 @@ speech.addEventListener('end', (event) => {
     }
 
     recognition.addEventListener('result', handleSpeechRecognition);          
-  }, 1700); 
+  }, 700); 
 
 });
 
