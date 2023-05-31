@@ -1,4 +1,5 @@
 
+
 /*
 * Retrieves the text from a wikipedia article.
 * @param wordUrl1: the URL of the wiki article
@@ -20,13 +21,13 @@ async function askForWikiSummary(wordUrl1){
         const ifMoreInfoNeeded = "would you like to read the information for you?";
         speech.text = ifMoreInfoNeeded;
         messages_area.append(assistantSpeak(ifMoreInfoNeeded));
-        window.speechSynthesis.speak(speech);         
+        synth.speak(speech);         
       } else {
 
         wikiSummary ="Sorry, I did not find information";
         speech.text = wikiSummary;
         messages_area.append(assistantSpeak(wikiSummary));
-        window.speechSynthesis.speak(speech);  
+        synth.speak(speech);  
 
         console.log(wikiSummary);
       }
