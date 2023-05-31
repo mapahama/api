@@ -1,6 +1,6 @@
 
-var code = "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";
-//var code = ${{API_KEY}};
+//var code = "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";
+var code = $API_KEY;
 var myTimeout;
 
 
