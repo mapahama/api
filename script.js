@@ -102,10 +102,10 @@ function assistantMsg(msg){
                 gptResponse = false;
             }
             else if (msg.toLowerCase().includes('yes') || msg.toLowerCase().includes('yes please')) {
-                myTimer();
+               // myTimer();
                 messages_area.append(assistantSpeak(wikiSummary));
                 readLongText(wikiSummary);
-                //speech.text = wikiSummary;  
+
                 gptResponse = false;  
                 return;         
 
