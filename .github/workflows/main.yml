@@ -1,9 +1,0 @@
-on:
-  push:
-    branches: [ test_ci ]
-
-jobs:
-  display:
-    runs-on: ubuntu_latest
-    env:
-      API_KEY: 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
