@@ -95,7 +95,6 @@ recognition.onstart = function(){
       counter = 0;
       break;
     }
-    continue;
     counter++;
   }
 }
