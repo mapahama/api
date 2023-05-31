@@ -88,6 +88,8 @@ recognition.onend = function() {
 recognition.onstart = function(){
   mic.style.pointerEvents = "none";
   iteration++;     
+  var isSpeaking = window.speechSynthesis.speaking;
+  while(synth
 }
 
 /*
