@@ -319,8 +319,5 @@ function readLongText(text) {
     firstUtterance.addEventListener("end", () => {
         synth.speak(secondUtterance);
     });
-    secondUtterance.addEventListener("end", () => {
-        recognition.start();
-    });
 }
 
