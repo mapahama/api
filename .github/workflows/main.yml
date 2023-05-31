@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+
+env:
+  API_KEY: "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"
+  
 jobs:
   build:
     runs-on: ubuntu-latest
