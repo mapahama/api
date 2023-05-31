@@ -121,7 +121,7 @@ speech.addEventListener('end', (event) => {
     }
 
     recognition.addEventListener('result', handleSpeechRecognition);          
-  }, 1000); 
+  }, 2000); 
 
 });
 
@@ -134,7 +134,6 @@ speech.addEventListener('start', (event) => {
   console.log("on start speech event" + event);
   myTimeout = setTimeout(myTimer, 10000);
   recognition.removeEventListener('result', handleSpeechRecognition);
-  recognition.stop();
 });
 
 
