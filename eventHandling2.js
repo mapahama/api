@@ -87,9 +87,17 @@ recognition.onend = function() {
 */
 recognition.onstart = function(){
   mic.style.pointerEvents = "none";
+  var counter = 0
   iteration++;     
-  var isSpeaking = window.speechSynthesis.speaking;
-  while(synth
+  var isSpeaking = synth.speaking;
+  while(isSpeaking){
+    if(counter > 50){
+      counter = 0;
+      break;
+    }
+    continue;
+    counter++;
+  }
 }
 
 /*
