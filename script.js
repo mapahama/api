@@ -268,16 +268,16 @@ function assistantMsg(msg){
     let hour = day.getHours();
 
     if(hour >= 0  && hour < 12){
-        salute = "good morning!";
+        salute = "Good morning!";
 
     } else if(hour == 12){
-        salute = "good noon!";
+        salute = "Good noon!";
 
     } else if(hour > 12  && hour <= 17){
-        salute = "good afternoon!";
+        salute = "Good afternoon!";
 
     } else {
-        salute = "good evening!";
+        salute = "Good evening!";
     }
 
     return salute;
