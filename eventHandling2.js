@@ -121,7 +121,6 @@ speech.addEventListener('end', (event) => {
 
     recognition.addEventListener('result', handleSpeechRecognition);          
   }, 1700); 
-  recognition.start();
 
 });
 
