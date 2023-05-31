@@ -77,9 +77,6 @@ recognition.onend = function() {
   console.log("ended...");
   iteration = 0;
 
-  if(!stop){
-    recognition.start();
-  }
 }
 
 /*
