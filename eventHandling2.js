@@ -45,8 +45,6 @@ mic.addEventListener('click', () => {
   " use the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + 
   "Paper" + "</span></b>" + " to find scientific articles!";
 
-  recognition = new SpeechRecognition();
-  synth = window.speechSynthesis;
   synth.cancel
 
   //speech = new SpeechSynthesisUtterance("hi");
@@ -62,6 +60,11 @@ mic.addEventListener('click', () => {
   messages_area.append(assistantSpeak(speech.text));
   synth.speak(speech);
   
+  //start recognition
+  setTimeout(function() {
+      recognition.start(); 
+  }, 1000);
+
   stop = false;    
   
 });
@@ -73,6 +76,10 @@ recognition.onend = function() {
 
   console.log("ended...");
   iteration = 0;
+
+  if(!stop){
+    recognition.start();
+  }
 }
 
 /*
@@ -80,7 +87,6 @@ recognition.onend = function() {
 */
 recognition.onstart = function(){
   mic.style.pointerEvents = "none";
-  synth.cancel();
   iteration++;     
 }
 
@@ -103,7 +109,6 @@ recognition.onerror = function(event) {
 */
 speech.addEventListener('end', (event) => {
 
-  //stop = false;
   setTimeout(function() {
     synth.cancel();
     console.log("on end speech event" + event);
@@ -116,10 +121,6 @@ speech.addEventListener('end', (event) => {
 
     recognition.addEventListener('result', handleSpeechRecognition);          
   }, 1700); 
-  
-  if(!stop){
-    recognition.start();
-  }       
 
 });
 
@@ -131,8 +132,6 @@ speech.addEventListener('start', (event) => {
 
   console.log("on start speech event" + event);
   myTimeout = setTimeout(myTimer, 10000);
-  //stop =true;
-  recognition.stop();
   recognition.removeEventListener('result', handleSpeechRecognition);
 
 });
