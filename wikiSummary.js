@@ -18,7 +18,7 @@ async function askForWikiSummary(wordUrl1){
         console.log(extract);
         
         wikiSummary = extract;
-        const ifMoreInfoNeeded = "would you like to read the information for you?";
+        const ifMoreInfoNeeded = "Would you like to read the information for you?";
         speech.text = ifMoreInfoNeeded;
         messages_area.append(assistantSpeak(ifMoreInfoNeeded));
         synth.speak(speech);         
