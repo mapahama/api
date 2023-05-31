@@ -89,14 +89,6 @@ recognition.onstart = function(){
   mic.style.pointerEvents = "none";
   var counter = 0
   iteration++;     
-  var isSpeaking = synth.speaking;
-  while(isSpeaking){
-    if(counter > 20){
-      counter = 0;
-      break;
-    }
-    counter++;
-  }
 }
 
 /*
@@ -142,7 +134,7 @@ speech.addEventListener('start', (event) => {
   console.log("on start speech event" + event);
   myTimeout = setTimeout(myTimer, 10000);
   recognition.removeEventListener('result', handleSpeechRecognition);
-
+  recognition.stop();
 });
 
 
