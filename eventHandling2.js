@@ -162,3 +162,10 @@ function handleSpeechRecognition(event) {
       event.results[event.resultIndex][0].transcript = '';
   }
 }
+
+// Handle beforeunload event to stop the speech synthesis when page is refreshed
+window.addEventListener('beforeunload', function() {
+  synth.cancel();
+  synth = null;
+  speech = null;
+});
