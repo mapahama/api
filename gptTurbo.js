@@ -1,5 +1,5 @@
 
-var code = ${{ env.API_KEY }};
+var code = $API_KEY;
 var myTimeout;
 
 
