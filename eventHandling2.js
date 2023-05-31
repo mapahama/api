@@ -91,7 +91,7 @@ recognition.onstart = function(){
   iteration++;     
   var isSpeaking = synth.speaking;
   while(isSpeaking){
-    if(counter > 50){
+    if(counter > 20){
       counter = 0;
       break;
     }
