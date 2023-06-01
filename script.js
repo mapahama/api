@@ -316,8 +316,15 @@ function readLongText(text) {
     synth.speak(firstUtterance);
     recognition.stop();
     // Add an event listener to the first utterance to start the second one when it finishes
+
+    firstUtterance.addEventListener("start", () => {
+        recognition.stop();
+    });
     firstUtterance.addEventListener("end", () => {
         synth.speak(secondUtterance);
+    });
+    secondUtterance.addEventListener("end", () => {
+        recognition.start();
     });
 }
 
