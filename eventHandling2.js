@@ -156,24 +156,14 @@ function handleSpeechRecognition(event) {
 
   console.log("In function handleSpeechRecognition " + event);
 
-  //check if the assistant is speaking
-  isSpeaking = synth.speaking;
-  if (!isSpeaking){
+  var transcript = event.results[event.resultIndex][0].transcript;
 
-      console.log(event);
-      console.log("result received");
-      var transcript = event.results[event.resultIndex][0].transcript;
-
-      if (transcript.trim().length !== 0){
-          messages_area.append(userMSg(transcript));
-          assistantMsg(transcript);
-      }
-
+  if (transcript.trim().length !== 0){
+      messages_area.append(userMSg(transcript));
+      assistantMsg(transcript);
   } else {
       console.log("! iteration2: " + event.resultIndex);   
-
-      event.results[event.resultIndex][0].transcript = '';
-      
+      event.results[event.resultIndex][0].transcript = '';  
   }
 }
 
