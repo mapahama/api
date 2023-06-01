@@ -120,10 +120,10 @@ speech.addEventListener('end', (event) => {
 
   console.log("In function speech addEventListener end" + event);
   // start the speech recognition in the app after clicking on mic button
-  //if(recognitionStart){
+  if(recognitionStart){
     recognitionStart = false;
     recognition.start();
-  //}
+  }
   
   setTimeout(function() {
     synth.cancel();
@@ -146,7 +146,7 @@ speech.addEventListener('start', (event) => {
 
   console.log("in function speech addEventListener start " + event);
   
-  recognition.removeEventListener('result', handleSpeechRecognition);
+  //recognition.removeEventListener('result', handleSpeechRecognition);
   assistantIsSpeaking = true;
   
   myTimeout = setTimeout(myTimer, 10000);
