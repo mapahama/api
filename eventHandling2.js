@@ -58,7 +58,7 @@ mic.addEventListener('click', () => {
 
   messages_area.append(assistantSpeak(appWakeWords));
   messages_area.append(assistantSpeak(speech.text));
-  synth.speak(speech);
+  //synth.speak(speech);
   
   var isSpeaking = synth.speaking;
   var counter = 0;
