@@ -40,7 +40,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   
-  console.log("In function mic addEventListener click  Test2");
+  console.log("In function mic addEventListener click  Test3");
   
   let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
@@ -148,8 +148,6 @@ speech.addEventListener('start', (event) => {
   assistantIsSpeaking = true;
   
   myTimeout = setTimeout(myTimer, 10000);
-  recognition.removeEventListener('result', handleSpeechRecognition);
-  recognition.stop();
 });
 
 /*
@@ -176,7 +174,6 @@ function handleSpeechRecognition(event) {
       console.log("! iteration2: " + event.resultIndex);       
       event.results[event.resultIndex][0].transcript = '';
       recognition.removeEventListener('result', handleSpeechRecognition);
-      recognition.stop();
   }
 }
 
