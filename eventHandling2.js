@@ -1,4 +1,4 @@
-var startRecognition = false;
+let startRecognition = false;
 /*
 * Handling event click on maleBtn.
 */
@@ -61,7 +61,7 @@ mic.addEventListener('click', () => {
   synth.speak(speech);
   
   startRecognition = true;
-  console.log("recognition started.............");
+  console.log("recognition started.............2");
   stop = false;    
   
 });
