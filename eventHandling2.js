@@ -68,6 +68,7 @@ mic.addEventListener('click', () => {
     }
     counter++;
     console.log("counter: " + counter);
+    isSpeaking = synth.speaking;
   }
   counter = 0;
   //start recognition
