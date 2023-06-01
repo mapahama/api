@@ -62,11 +62,10 @@ mic.addEventListener('click', () => {
   
 
   //start recognition
-  var ads = speech.onend = function() {
-     setTimeout(function() {
-       recognition.start(); 
-     }, 500);
-  }
+  setTimeout(function() {
+    console.log("in recognition start after clicking mic button");
+    recognition.start(); 
+  }, 500);
   
   stop = false;    
   
