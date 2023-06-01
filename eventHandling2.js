@@ -1,7 +1,6 @@
 
 var assistantIsSpeaking = false;
 var recognitionStart = false;
-var wikiSpeakInterrupted = false;
 /*
 * Handling event click on maleBtn.
 */
@@ -41,7 +40,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   
-  console.log("In function mic addEventListener click  Test5");
+  console.log("In function mic addEventListener click  Test7");
   
   let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
@@ -118,12 +117,6 @@ recognition.onerror = function(event) {
 * Resuming SpeechRecognition when the SpeechSynthesis from the assistant is ended.
 */
 speech.addEventListener('end', (event) => {
-  
-  if(wikiSpeakInterrupted){
-    recognition.addEventListener('result', handleSpeechRecognition);
-    wikiSpeakInterrupted = false;
-  }
-
 
   console.log("In function speech addEventListener end" + event);
   // start the speech recognition in the app after clicking on mic button
@@ -152,6 +145,8 @@ assistantIsSpeaking = false;
 speech.addEventListener('start', (event) => {
 
   console.log("in function speech addEventListener start " + event);
+  
+  recognition.removeEventListener('result', handleSpeechRecognition);
   assistantIsSpeaking = true;
   
   myTimeout = setTimeout(myTimer, 10000);
@@ -181,7 +176,7 @@ function handleSpeechRecognition(event) {
       console.log("! iteration2: " + event.resultIndex);   
       wikiSpeakInterrupted = true;
       event.results[event.resultIndex][0].transcript = '';
-      recognition.removeEventListener('result', handleSpeechRecognition);
+      
   }
 }
 
