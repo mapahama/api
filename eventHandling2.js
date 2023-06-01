@@ -49,7 +49,7 @@ mic.addEventListener('click', () => {
   " use the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + 
   "Paper" + "</span></b>" + " to find scientific articles!";
 
-  synth.cancel
+  synth.cancel;
 
   //speech = new SpeechSynthesisUtterance("hi");
 
@@ -94,7 +94,7 @@ recognition.onstart = function(){
   
   console.log("In function recognition.onstart");
   mic.style.pointerEvents = "none";
-  var counter = 0
+  var counter = 0;
   iteration++;     
 }
 
@@ -149,6 +149,7 @@ speech.addEventListener('start', (event) => {
   
   myTimeout = setTimeout(myTimer, 10000);
   recognition.removeEventListener('result', handleSpeechRecognition);
+  recognition.stop();
 });
 
 /*
@@ -172,8 +173,10 @@ function handleSpeechRecognition(event) {
       }
 
   } else {
-      console.log("! iteration2: " + event.resultIndex)       
+      console.log("! iteration2: " + event.resultIndex);       
       event.results[event.resultIndex][0].transcript = '';
+      recognition.removeEventListener('result', handleSpeechRecognition);
+      recognition.stop();
   }
 }
 
