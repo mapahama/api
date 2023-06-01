@@ -1,5 +1,4 @@
 var isSpeaking = synth.speaking;
-var assistantIsSpeaking = false;
 var recognitionStart = false;
 /*
 * Handling event click on maleBtn.
@@ -81,9 +80,7 @@ recognition.onend = function() {
   iteration = 0;
 
   if(!stop){
-    if(!assistantIsSpeaking){
-       recognition.start();   
-    }
+    recognition.start();   
   }
 }
 
@@ -138,7 +135,6 @@ speech.addEventListener('end', (event) => {
       recognition.addEventListener('result', handleSpeechRecognition);   
     }
   }, 1000); 
-assistantIsSpeaking = false;
 });
 
 
@@ -150,8 +146,6 @@ speech.addEventListener('start', (event) => {
   console.log("in function speech addEventListener start " + event);
   
   //recognition.removeEventListener('result', handleSpeechRecognition);
-  assistantIsSpeaking = true;
-  
   myTimeout = setTimeout(myTimer, 10000);
 });
 
