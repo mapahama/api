@@ -322,11 +322,6 @@ function readLongText(text) {
     firstUtterance.addEventListener("end", () => {
         synth.speak(secondUtterance);
     });
-    secondUtterance.addEventListener("end", () => {
-        
-      setTimeout(function() {
-        recognition.start();
-      }, 600); 
-    });
+   
 }
 
