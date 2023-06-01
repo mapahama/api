@@ -20,7 +20,6 @@ var paperIDnumber = 0;
 var paperNumber = null;
 var paperTitle = "";
 var stop = false;
-var rejection = "no";
 
 /*
 *  Creating SpeechRecognition Object, if the browser supports it.
@@ -115,7 +114,7 @@ function assistantMsg(msg){
                 speech.text = result;
                 gptResponse = false;
             }
-            else if (msg.toLowerCase() === rejection) {
+            else if (msg.toLowerCase().includes('no') && msg.toLowerCase().length <= 3) {
                 speech.text = "as you wish";  
                 gptResponse = false;          
             } 
