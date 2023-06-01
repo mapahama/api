@@ -320,12 +320,14 @@ function readLongText(text) {
     firstUtterance.addEventListener("start", () => {
         assistantIsSpeaking = true;
         recognition.stop();
+         recognition.removeEventListener('result', handleSpeechRecognition);
     });
     firstUtterance.addEventListener("end", () => {
         synth.speak(secondUtterance);
     });
     secondUtterance.addEventListener("end", () => {
         assistantIsSpeaking = false;
+        recognition.addEventListener('result', handleSpeechRecognition);
     });
    
 }
