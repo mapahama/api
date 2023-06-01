@@ -311,10 +311,10 @@ function readLongText(text) {
     firstUtterance.rate = 0.85;
     secondUtterance.rate = 0.85;
 
-  
+    
     // Start reading the first utterance
     synth.speak(firstUtterance);
-
+    recognition.stop();
     // Add an event listener to the first utterance to start the second one when it finishes
     firstUtterance.addEventListener("end", () => {
         synth.speak(secondUtterance);
