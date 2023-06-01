@@ -62,7 +62,7 @@ mic.addEventListener('click', () => {
   
 
   //start recognition
-  speech.onend = function() {
+  var ads = speech.onend = function() {
      setTimeout(function() {
        recognition.start(); 
      }, 500);
