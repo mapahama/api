@@ -115,7 +115,7 @@ function assistantMsg(msg){
                 speech.text = result;
                 gptResponse = false;
             }
-            else if (msg.toLowerCase() === ('no')) {
+            else if (msg.toLowerCase() === 'no') {
                 speech.text = "as you wish";  
                 gptResponse = false;          
             } 
