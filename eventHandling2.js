@@ -1,4 +1,5 @@
 
+var isSpeaking = synth.speaking;
 /*
 * Handling event click on maleBtn.
 */
@@ -60,7 +61,6 @@ mic.addEventListener('click', () => {
   messages_area.append(assistantSpeak(speech.text));
   synth.speak(speech);
   
-  var isSpeaking = synth.speaking;
   var counter = 0;
   //start recognition
   while(isSpeaking){
