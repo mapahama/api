@@ -1,4 +1,4 @@
-let startRecognition = false;
+
 /*
 * Handling event click on maleBtn.
 */
@@ -62,12 +62,11 @@ mic.addEventListener('click', () => {
   messages_area.append(assistantSpeak(speech.text));
   synth.speak(speech);
   
-  startRecognition = true;
-  console.log("recognition started2!!!");
+  console.log("recognition started3!!");
   stop = false;    
   
   setTimeout(function() {
-    //recognition.start();      
+    recognition.start();      
   }, 1500); 
   
 });
@@ -118,11 +117,6 @@ speech.addEventListener('end', (event) => {
 
   console.log("In function speech addEventListener end" + event);
   
-  if(startRecognition){
-    startRecognition = false;
-    recognition.start();
-    return;
-  }
   setTimeout(function() {
     synth.cancel();
 
