@@ -37,7 +37,9 @@ femaleBtn.addEventListener("click", function(e){
 * Handling event click on mic button and activating SpeechRecognition.
 */
 mic.addEventListener('click', () => {
-
+  
+  console.log("In function mic addEventListener click");
+  
   let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
   "</span></b>" + " or "+ "<b><span style='color: rgba(15, 14, 14, 0.782);'>" +  "Wikipedia" + 
@@ -71,7 +73,7 @@ mic.addEventListener('click', () => {
 */
 recognition.onend = function() { 
 
-  console.log("ended...");
+  console.log("In function recognition.onend");
   iteration = 0;
 
   if(!stop){
@@ -83,6 +85,8 @@ recognition.onend = function() {
 * Handling event SpeechRecognition start. 
 */
 recognition.onstart = function(){
+  
+  console.log("In function recognition.onstart");
   mic.style.pointerEvents = "none";
   var counter = 0
   iteration++;     
@@ -92,7 +96,8 @@ recognition.onstart = function(){
 * Event when users utterance stops. 
 */
 recognition.onspeechend = function(){
-  console.log("No Activity...");
+  
+  console.log("In function recognition.onspeechend");
 }
 
 /*
@@ -107,6 +112,8 @@ recognition.onerror = function(event) {
 */
 speech.addEventListener('end', (event) => {
 
+  console.log("In function speech addEventListener end" + event);
+  
   if(startRecognition){
     startRecognition = false;
     recognition.start();
@@ -114,8 +121,6 @@ speech.addEventListener('end', (event) => {
   }
   setTimeout(function() {
     synth.cancel();
-    console.log("on end speech event" + event);
-
 
     if(askedWikiInformation){ 
       askForWikiSummary(wordUrl1);
@@ -133,7 +138,8 @@ speech.addEventListener('end', (event) => {
 */
 speech.addEventListener('start', (event) => {
 
-  console.log("on start speech event" + event);
+  console.log("in function speed addEventListener start " + event);
+  
   myTimeout = setTimeout(myTimer, 10000);
   recognition.removeEventListener('result', handleSpeechRecognition);
 });
@@ -143,7 +149,7 @@ speech.addEventListener('start', (event) => {
 */
 function handleSpeechRecognition(event) {
 
-  console.log("recognition event: " + event);
+  console.log("In function handleSpeechRecognition " + event);
   var isSpeaking = synth.speaking;
 
   //check if the assistant is speaking
