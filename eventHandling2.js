@@ -61,7 +61,7 @@ mic.addEventListener('click', () => {
   synth.speak(speech);
   
   startRecognition = true;
-  console.log("recognition started.............2");
+  console.log("recognition started!");
   stop = false;    
   
 });
