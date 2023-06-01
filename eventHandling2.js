@@ -61,8 +61,7 @@ mic.addEventListener('click', () => {
   messages_area.append(assistantSpeak(appWakeWords));
   messages_area.append(assistantSpeak(speech.text));
   synth.speak(speech);
-  
-  console.log("recognition started3!!");
+
   stop = false;    
   
   setTimeout(function() {
@@ -136,7 +135,7 @@ speech.addEventListener('end', (event) => {
 */
 speech.addEventListener('start', (event) => {
 
-  console.log("in function speed addEventListener start " + event);
+  console.log("in function speech addEventListener start " + event);
   
   myTimeout = setTimeout(myTimer, 10000);
   recognition.removeEventListener('result', handleSpeechRecognition);
