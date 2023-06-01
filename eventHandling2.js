@@ -40,7 +40,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   
-  console.log("In function mic addEventListener click  Test8");
+  console.log("In function mic addEventListener click  Test9");
   
   let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
@@ -120,10 +120,10 @@ speech.addEventListener('end', (event) => {
 
   console.log("In function speech addEventListener end" + event);
   // start the speech recognition in the app after clicking on mic button
-  if(recognitionStart){
+  //if(recognitionStart){
     recognitionStart = false;
     recognition.start();
-  }
+  //}
   
   setTimeout(function() {
     synth.cancel();
