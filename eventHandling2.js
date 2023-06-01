@@ -60,10 +60,19 @@ mic.addEventListener('click', () => {
   messages_area.append(assistantSpeak(speech.text));
   synth.speak(speech);
   
+  var isSpeaking = synth.speaking;
+  var counter = 0;
+  while(isSpeaking){
+    if(counter > 20){
+      break;
+    }
+    counter++;
+  }
+  counter = 0;
   //start recognition
   setTimeout(function() {
       recognition.start(); 
-  }, 1500);
+  }, 0);
 
   stop = false;    
   
