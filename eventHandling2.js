@@ -1,4 +1,5 @@
 
+var recognitionStart = false;
 /*
 * Handling event click on maleBtn.
 */
@@ -64,10 +65,10 @@ mic.addEventListener('click', () => {
 
   stop = false;    
   
-  setTimeout(function() {
-    recognition.start();      
-  }, 1500); 
-  
+  //setTimeout(function() {
+  //  recognition.start();      
+  //}, 1500); 
+  recognitionStart = true;
 });
 
 /*
@@ -115,6 +116,11 @@ recognition.onerror = function(event) {
 speech.addEventListener('end', (event) => {
 
   console.log("In function speech addEventListener end" + event);
+  // start the speech recognition in the app after clicking on mic button
+  if(recognitionStart){
+    recognitionStart = false;
+    recognition.start();
+  }
   
   setTimeout(function() {
     synth.cancel();
