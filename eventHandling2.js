@@ -63,7 +63,7 @@ mic.addEventListener('click', () => {
   var isSpeaking = synth.speaking;
   var counter = 0;
   while(isSpeaking){
-    if(counter > 100){
+    if(counter > 30000){
       break;
     }
     counter++;
