@@ -67,6 +67,7 @@ mic.addEventListener('click', () => {
       break;
     }
     counter++;
+    console.log("counter: " + counter);
   }
   counter = 0;
   //start recognition
