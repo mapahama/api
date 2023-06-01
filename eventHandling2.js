@@ -60,12 +60,19 @@ mic.addEventListener('click', () => {
   messages_area.append(assistantSpeak(speech.text));
   synth.speak(speech);
   
-
+  var isSpeaking = synth.speaking;
+  var counter = 0;
   //start recognition
-  setTimeout(function() {
+  while(isSpeaking){
+    if(counter > 10000){
+       break;
+    }
+    counter++;
+    isSpeaking = synth.speaking;
     console.log("in recognition start after clicking mic button");
-    recognition.start(); 
-  }, 500);
+  }
+
+  recognition.start(); 
   
   stop = false;    
   
