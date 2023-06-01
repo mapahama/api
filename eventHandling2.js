@@ -1,6 +1,7 @@
 
 var assistantIsSpeaking = false;
 var recognitionStart = false;
+var wikiSpeakInterrupted = false;
 /*
 * Handling event click on maleBtn.
 */
@@ -117,6 +118,12 @@ recognition.onerror = function(event) {
 * Resuming SpeechRecognition when the SpeechSynthesis from the assistant is ended.
 */
 speech.addEventListener('end', (event) => {
+  
+  if(wikiSpeakInterrupted){
+    recognition.addEventListener('result', handleSpeechRecognition);
+    wikiSpeakInterrupted = false;
+  }
+
 
   console.log("In function speech addEventListener end" + event);
   // start the speech recognition in the app after clicking on mic button
@@ -171,7 +178,8 @@ function handleSpeechRecognition(event) {
       }
 
   } else {
-      console.log("! iteration2: " + event.resultIndex);       
+      console.log("! iteration2: " + event.resultIndex);   
+      wikiSpeakInterrupted = true;
       event.results[event.resultIndex][0].transcript = '';
       recognition.removeEventListener('result', handleSpeechRecognition);
   }
