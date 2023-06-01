@@ -1,4 +1,5 @@
 
+var assistantIsSpeaking = false;
 var recognitionStart = false;
 /*
 * Handling event click on maleBtn.
@@ -39,7 +40,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   
-  console.log("In function mic addEventListener click");
+  console.log("In function mic addEventListener click  Test1");
   
   let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
@@ -80,7 +81,9 @@ recognition.onend = function() {
   iteration = 0;
 
   if(!stop){
-    recognition.start();
+    if(!assistantIsSpeaking){
+       recognition.start();   
+    }
   }
 }
 
@@ -132,7 +135,7 @@ speech.addEventListener('end', (event) => {
 
     recognition.addEventListener('result', handleSpeechRecognition);          
   }, 2000); 
-
+assistantIsSpeaking = false;
 });
 
 
@@ -142,6 +145,7 @@ speech.addEventListener('end', (event) => {
 speech.addEventListener('start', (event) => {
 
   console.log("in function speech addEventListener start " + event);
+  assistantIsSpeaking = true;
   
   myTimeout = setTimeout(myTimer, 10000);
   recognition.removeEventListener('result', handleSpeechRecognition);
