@@ -61,18 +61,11 @@ mic.addEventListener('click', () => {
   synth.speak(speech);
   
   var isSpeaking = synth.speaking;
-  var counter = 0;
-  //start recognition
-  while(isSpeaking){
-    if(counter > 10000){
-       break;
-    }
-    counter++;
-    isSpeaking = synth.speaking;
-    console.log("in recognition start after clicking mic button");
-  }
 
-  recognition.start(); 
+
+  if(!isSpeaking){
+    recognition.start();
+  }
   
   stop = false;    
   
