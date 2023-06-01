@@ -1,4 +1,4 @@
-
+var isSpeaking = synth.speaking;
 var assistantIsSpeaking = false;
 var recognitionStart = false;
 /*
@@ -40,7 +40,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   
-  console.log("In function mic addEventListener click  Test9");
+  console.log("In function mic addEventListener click  Test10");
   
   let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
@@ -133,8 +133,10 @@ speech.addEventListener('end', (event) => {
       askedWikiInformation = false; 
     }
 
-    recognition.addEventListener('result', handleSpeechRecognition);          
-  }, 2000); 
+     if(!isSpeaking){
+       recognition.addEventListener('result', handleSpeechRecognition);   
+     }
+  }, 1000); 
 assistantIsSpeaking = false;
 });
 
@@ -158,7 +160,6 @@ speech.addEventListener('start', (event) => {
 function handleSpeechRecognition(event) {
 
   console.log("In function handleSpeechRecognition " + event);
-  var isSpeaking = synth.speaking;
 
   //check if the assistant is speaking
   if (!isSpeaking){
@@ -174,7 +175,7 @@ function handleSpeechRecognition(event) {
 
   } else {
       console.log("! iteration2: " + event.resultIndex);   
-      wikiSpeakInterrupted = true;
+
       event.results[event.resultIndex][0].transcript = '';
       
   }
