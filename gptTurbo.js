@@ -1,9 +1,12 @@
 
-
+var data1="";
 var code = "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";
 var myTimeout;
 
-
+function getDataFromModule() {
+  data1 = window.sharedData;
+  console.log("data1: " + data1); // Output: Hello from non-module!
+}
 /*
 *Using OpenAI API to send user questions to gpt-3.5-turbo model and return answers.
 *@param input:  user question
@@ -38,6 +41,8 @@ async function getGPTmessage(input) {
   return result1;
 
 }
+
+
 
 
 
