@@ -18,7 +18,7 @@
         <button class="female active">
           Female Voice
         </button>  
-        <button class="male inactive">
+        <button  class="male inactive">
           Male Voice
         </button>  
       </div>
@@ -30,7 +30,12 @@
         </div>
       </div>
       <hr />
-      <img src="mic.png" id="mic" alt="mic" />
+      <button class ="mic-button" tabindex="0" type="button" id="mic" aria-label="Mikrofon">
+        <img src="mic.png" alt="mic" /> 
+        <span class="not-visible">activate speech assistant</span>
+      </button>
+      
+      <!--img tabindex="0" type="button" src="mic.png" id="mic" alt="mic" /-->
     </div>
 
     <script src="script.js"></script> 
@@ -38,6 +43,7 @@
     <script src="gptTurbo.js"></script>
     <script src="eventHandling2.js"></script>
     <script src="wikiSummary.js"></script>
+
 
   </body>
 </html>
