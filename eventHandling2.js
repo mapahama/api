@@ -1,5 +1,4 @@
-//var isSpeaking = synth.speaking;
-var isSpeaking = false;
+var isSpeaking = synth.speaking;
 var recognitionStart = false;
 /*
 * Handling event click on maleBtn.
