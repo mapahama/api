@@ -1,6 +1,7 @@
 
 var data1="";
-var code = "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";
+//var code = "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";
+code = data1;
 var myTimeout;
 
 function getDataFromModule() {
