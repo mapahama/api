@@ -1,6 +1,8 @@
 
-var code = "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";
+import {API_KEY} from "./config.js"
+//var code = "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";
 //var code = {{API_KEY}};
+var code = API_KEY;
 var myTimeout;
 
 
