@@ -39,7 +39,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   
-  console.log("In function mic addEventListener click  Test19");
+  console.log("In function mic addEventListener click  Test20");
   
   let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
