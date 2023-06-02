@@ -1,5 +1,5 @@
 
-//var code = "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";
+var code = "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";
 var myTimeout;
 
 /*
@@ -8,9 +8,6 @@ var myTimeout;
 *@return: answer from gpt model
 */
 async function getGPTmessage(input) {
-  
-  console.log("window shared variable in GPT FILE is: " + window.sharedVariable);
-  var code = window.sharedVariable;
   
   var result1 = null;
   const options = {
