@@ -164,7 +164,7 @@ function handleSpeechRecognition(event) {
       messages_area.append(userMSg(transcript));
       assistantMsg(transcript);
   } else {
-      console.log("! iteration2: " + event.resultIndex);   
+      console.log("! either message is empty OR assistant is still speaking " + event.resultIndex);   
       event.results[event.resultIndex][0].transcript = ''; 
       
       setTimeout(function() {
