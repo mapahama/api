@@ -120,6 +120,7 @@ function assistantMsg(msg){
             } 
             else if (msg.toLowerCase().includes('okay stop')|| msg.toLowerCase().includes('ok stop')) {
                 speech.text = "API is turning off...";  
+                mic.classList.add("inactive");
                 recognition.continuous = false;
                 gptResponse = false;  
                 stop = true;
