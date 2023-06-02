@@ -9,7 +9,7 @@ var myTimeout;
 */
 async function getGPTmessage(input) {
   
-  console.log("window shared variable in SCRIPT FILE is: " + window.sharedVariable);
+  console.log("window shared variable in GPT FILE is: " + window.sharedVariable);
   var code = window.sharedVariable;
   
   var result1 = null;
