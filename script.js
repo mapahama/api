@@ -79,9 +79,6 @@ function assistantSpeak(msg){
 * @param msg: user voice input
 */
 function assistantMsg(msg){
-
-
-    console.log("window shared variable in SCRIPT FILE is: " + window.sharedVariable);
     
     // setting up assistants voice
     speech.text = "";
