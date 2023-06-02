@@ -24,6 +24,3 @@ jobs:
         run: |
           sed -i "s|{{API_KEY}}|$API_KEY|g" gptTurbo.js
           cat gptTurbo.js
-          
-      - name: Api key
-        run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
