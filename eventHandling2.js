@@ -160,12 +160,15 @@ function handleSpeechRecognition(event) {
   var transcript = event.results[event.resultIndex][0].transcript;
   isSpeaking = synth.speaking;
   
-  if (transcript.trim().length !== 0 && !isSpeaking){
+  if ((transcript.trim().length !== 0) && (!isSpeaking)){
       messages_area.append(userMSg(transcript));
       assistantMsg(transcript);
   } else {
       console.log("! iteration2: " + event.resultIndex);   
-      event.results[event.resultIndex][0].transcript = '';  
+      event.results[event.resultIndex][0].transcript = ''; 
+      
+      setTimeout(function() {
+      }, 1500); 
   }
 }
 
