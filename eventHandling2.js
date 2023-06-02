@@ -118,6 +118,8 @@ speech.addEventListener('end', (event) => {
 
   console.log("In function speech addEventListener end" + event);
   // start the speech recognition in the app after clicking on mic button
+  recognition.removeEventListener('result', handleSpeechRecognition);
+
   if(recognitionStart){
     recognitionStart = false;
     recognition.start();
