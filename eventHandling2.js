@@ -49,6 +49,7 @@ mic.addEventListener('click', () => {
   "Paper" + "</span></b>" + " to find scientific articles!";
 
   synth.cancel;
+  mic.classList.add("active");
 
   //speech = new SpeechSynthesisUtterance("hi");
 
