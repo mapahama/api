@@ -135,7 +135,7 @@ speech.addEventListener('end', (event) => {
     if(!isSpeaking){
       recognition.addEventListener('result', handleSpeechRecognition);   
     }
-  }, 1000); 
+  }, 1700); 
 });
 
 
@@ -158,8 +158,9 @@ function handleSpeechRecognition(event) {
   console.log("In function handleSpeechRecognition " + event);
 
   var transcript = event.results[event.resultIndex][0].transcript;
-
-  if (transcript.trim().length !== 0){
+  isSpeaking = synth.speaking;
+  
+  if (transcript.trim().length !== 0 && !isSpeaking){
       messages_area.append(userMSg(transcript));
       assistantMsg(transcript);
   } else {
