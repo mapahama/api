@@ -1,4 +1,5 @@
-var isSpeaking = synth.speaking;
+//var isSpeaking = synth.speaking;
+var isSpeaking = false;
 var recognitionStart = false;
 /*
 * Handling event click on maleBtn.
@@ -39,7 +40,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   
-  console.log("In function mic addEventListener click  Test21");
+  console.log("In function mic addEventListener click  Test22");
   
   let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
