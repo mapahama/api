@@ -4,6 +4,7 @@ const chats = document.querySelector('.chats');
 const notchat = document.getElementById('notchat');
 const femaleBtn = document.querySelector(".female");
 const maleBtn = document.querySelector(".male");
+const browserLanguage = navigator.language || navigator.userLanguage;
 
 let iteration = 0;
 let recognition = null;
@@ -20,6 +21,9 @@ var paperIDnumber = 0;
 var paperNumber = null;
 var paperTitle = "";
 var stop = false;
+
+
+
 
 /*
 *  Creating SpeechRecognition Object, if the browser supports it.
@@ -100,7 +104,13 @@ function assistantMsg(msg){
                 speech.text = result;
                 gptResponse = false;
             }
-            else if (msg.toLowerCase().includes('yes') || msg.toLowerCase().includes('yes please')) {
+            else if (msg.toLowerCase().includes('wer bist du') || msg.toLowerCase().includes('wie heißt du')) {
+                let result = introDe[Math.floor(Math.random() * intro.length)]
+                speech.text = result;
+                gptResponse = false;
+            }
+            else if (msg.toLowerCase().includes('yes') || msg.toLowerCase().includes('yes please') ||
+                    (msg.toLowerCase().includes('ja') && browserLanguage === "de")) {
                // myTimer();
                 messages_area.append(assistantSpeak(wikiSummary));
                 readLongText(wikiSummary);
@@ -114,12 +124,27 @@ function assistantMsg(msg){
                 speech.text = result;
                 gptResponse = false;
             }
-            else if (msg.toLowerCase().includes('no') && msg.toLowerCase().length <= 3) {
-                speech.text = "as you wish";  
+            else if (msg.toLowerCase().includes('danke') || msg.toLowerCase().includes('dankeschön')) {
+                const result = thanksDe[Math.floor(Math.random() * thanks.length)];
+                speech.text = result;
+                gptResponse = false;
+            }
+            else if ((msg.toLowerCase().includes('no') && msg.toLowerCase().length <= 3) || (msg.toLowerCase().includes('nein'))) {
+
+                if(browserLanguage === "de"){
+                    speech.text = "wie Sie möchten"; 
+                } else {
+                    speech.text = "as you wish"; 
+                }
                 gptResponse = false;          
             } 
             else if (msg.toLowerCase().includes('okay stop')|| msg.toLowerCase().includes('ok stop')) {
-                speech.text = "API is turning off...";  
+
+                if(browserLanguage === "de"){
+                    speech.text = "API wird ausgeschaltet...";  
+                } else {
+                    speech.text = "API is turning off...";  
+                }
                 mic.classList.remove("active");
                 recognition.continuous = false;
                 gptResponse = false;  
@@ -133,7 +158,13 @@ function assistantMsg(msg){
                 // the word Paris is taken into account
                 askedWikiInformation = true;
                 window.open(`https://en.wikipedia.org/wiki/${msg.toLowerCase().replace("wikipedia", "")}`, "_blank");
-                const result = "showing result for " + msg.toLowerCase().replace("wikipedia", "") + " on wikipedia";
+
+                var result = "";
+                if(browserLanguage === "de"){
+                    result = "Ich zeige Ihnen Information über  " + msg.toLowerCase().replace("wikipedia", "") + " in Wikipedia";
+                } else {
+                    result = "showing result for " + msg.toLowerCase().replace("wikipedia", "") + " on wikipedia";
+                }
                 speech.text = result;
                 gptResponse = false;
 
@@ -154,19 +185,27 @@ function assistantMsg(msg){
                 // the word Paris is taken into account
                 msg = msg.toLowerCase().replace("google", "")
     
-                result = "I found something about " + msg + " on google!";
-                speech.text = result;
+                if(browserLanguage === "de"){
+                    result = "Ich habe etwas über " + msg + " in Google gefunden";
+                    speech.text = result;
+                } else {
+                    result = "I found something about " + msg + " on google!";
+                    speech.text = result;
+                }
                 
                 window.open(`http://google.com/search?q=${msg}`, "_blank");
                 gptResponse = false;
             }  
             // looking up for papers in SemanticScholar
-            else if (msg.toLowerCase().includes(('paper')) || msg.toLowerCase().includes(('people')))  {
+            else if (msg.toLowerCase().includes(('paper')) || msg.toLowerCase().includes(('people')) || msg.toLowerCase().includes(('paypal')))  {
+
                 if(msg.toLowerCase().includes(('paper'))){
                     msg = msg.toLowerCase().replace("paper", "");
                 } 
-                else {
+                else if(msg.toLowerCase().includes(('people'))){
                     msg = msg.toLowerCase().replace("people", "");
+                } else {
+                    msg = msg.toLowerCase().replace("paypal", "");
                 }
   
                let url = `https://api.semanticscholar.org/graph/v1/paper/search?query=${msg}`;
@@ -212,8 +251,13 @@ function assistantMsg(msg){
 
                         setTimeout(function() {
 
-                            result = "I found a paper about  " + msg + " with the following title: " + 
-                            "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + paperTitle + "</span></b>"
+                            if(browserLanguage === "de"){
+                                result = "Ich habe einen Artikel über  " + msg + " mit dem folgenden Titel gefunden: " + 
+                                "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + paperTitle + "</span></b>"
+                            } else {
+                                result = "I found a paper about  " + msg + " with the following title: " + 
+                                "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + paperTitle + "</span></b>"
+                            }
     
                             speech.text = result
     
@@ -268,16 +312,32 @@ function assistantMsg(msg){
     let hour = day.getHours();
 
     if(hour >= 0  && hour < 12){
-        salute = "Good morning!";
+        if(browserLanguage === "de"){
+            salute = "Guten Morgen!"
+        } else {
+            salute = "Good morning!";
+        }
 
     } else if(hour == 12){
-        salute = "Good noon!";
+        if(browserLanguage === "de"){
+            salute = "Guten Tag!"
+        } else {
+            salute = "Good noon!";
+        }
 
     } else if(hour > 12  && hour <= 17){
-        salute = "Good afternoon!";
+        if(browserLanguage === "de"){
+            salute = "Guten Tag!"
+        } else {
+            salute = "Good afternoon!";
+        }
 
     } else {
-        salute = "Good evening!";
+        if(browserLanguage === "de"){
+            salute = "Guten Abend!"
+        } else {
+            salute = "Good evening!";
+        }
     }
 
     return salute;
