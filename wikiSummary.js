@@ -1,5 +1,4 @@
 
-
 /*
 * Retrieves the text from a wikipedia article.
 * @param wordUrl1: the URL of the wiki article
@@ -18,13 +17,25 @@ async function askForWikiSummary(wordUrl1){
         console.log(extract);
         
         wikiSummary = extract;
-        const ifMoreInfoNeeded = "Would you like to read the information for you?";
+        var  ifMoreInfoNeeded = "";
+
+        if(browserLanguage === "de"){
+          ifMoreInfoNeeded = "soll ich den Artikel vorlesen?";
+        } else {
+          ifMoreInfoNeeded = "would you like to read the information for you?";
+        }
+        
         speech.text = ifMoreInfoNeeded;
         messages_area.append(assistantSpeak(ifMoreInfoNeeded));
-        synth.speak(speech);         
+        synth.speak(speech);        
       } else {
 
-        wikiSummary ="Sorry, I did not find information";
+        if(browserLanguage === "de"){
+          wikiSummary ="Leider habe ich keinen Artikel zum Thema gefunden";
+        } else {
+          wikiSummary ="Sorry, I did not find information";
+        }
+
         speech.text = wikiSummary;
         messages_area.append(assistantSpeak(wikiSummary));
         synth.speak(speech);  
