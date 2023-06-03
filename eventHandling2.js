@@ -53,7 +53,7 @@ mic.addEventListener('click', () => {
     appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
   "</span></b>" + " or "+ "<b><span style='color: rgba(15, 14, 14, 0.782);'>" +  "Wikipedia" + 
-  "</span></b>" + ", followed by the info you need. If you are a Smartie," + 
+  "</span></b>" + ", followed by the info you need. If you are a Smarty," + 
   " use the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + 
   "Paper" + "</span></b>" + " to find scientific articles!";
   }
