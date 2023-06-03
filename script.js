@@ -85,6 +85,9 @@ function assistantSpeak(msg){
 function assistantMsg(msg){
     
     // setting up assistants voice
+    if(browserLanguage === "de"){
+        speech.lang = "de-DE";
+    }
     speech.text = "";
     speech.volume = 1;
     speech.pitch = 0.9;
