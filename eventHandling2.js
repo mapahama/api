@@ -41,12 +41,22 @@ mic.addEventListener('click', () => {
   
   console.log("In function mic addEventListener click  Test24");
   
-  let appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
+  let appWakeWords ="";
+
+  if(browserLanguage === "de"){
+    appWakeWords =" Stellen Sie mir eine Frage! Ich kann zusätzlich dazu in Wikipedia und in Google suchen."+
+    " Sagen Sie einfach das Schlüsselwort " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
+    "</span></b>" + " oder "+ "<b><span style='color: rgba(15, 14, 14, 0.782);'>" +  "Wikipedia" + 
+    "</span></b>" + ", gefolgt von der gewünschten Info. Falls Sie nach Papers suchsen, nutzen Sie das Schlüsselwort " + 
+     "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Paper." + "</span></b>";
+  } else {
+    appWakeWords =" Ask me anything! I can also search in Wikipedia and Google for you."+
   " Just say the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
   "</span></b>" + " or "+ "<b><span style='color: rgba(15, 14, 14, 0.782);'>" +  "Wikipedia" + 
   "</span></b>" + ", followed by the info you need. If you are a Smartie," + 
   " use the keyword " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + 
   "Paper" + "</span></b>" + " to find scientific articles!";
+  }
 
   synth.cancel;
   mic.classList.add("active");
