@@ -6,6 +6,12 @@ let intro = ["I am your digital assistant Api!", "Hi, I am Api!", "My name is Ap
 
  let thanks = ["Most welcome", "I am glad to help you"];
 
+ let thanksDe = ["Bitte schön!", "Ich freue mich, dir zu helfen!"];
+
+ let introDe = ["Ich bin dein digitaler Assistent Api!", "Hi, ich bin Api!", "Mein Name ist Api",
+ "Ich bin dein personaler Assistent Api!"];
+
+
 
 
 
