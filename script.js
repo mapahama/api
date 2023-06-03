@@ -105,7 +105,7 @@ function assistantMsg(msg){
                 gptResponse = false;
             }
             else if (msg.toLowerCase().includes('wer bist du') || msg.toLowerCase().includes('wie heißt du')) {
-                let result = introDe[Math.floor(Math.random() * intro.length)]
+                let result = introDe[Math.floor(Math.random() * introDe.length)]
                 speech.text = result;
                 gptResponse = false;
             }
@@ -125,7 +125,7 @@ function assistantMsg(msg){
                 gptResponse = false;
             }
             else if (msg.toLowerCase().includes('danke') || msg.toLowerCase().includes('dankeschön')) {
-                const result = thanksDe[Math.floor(Math.random() * thanks.length)];
+                const result = thanksDe[Math.floor(Math.random() * thanksDe.length)];
                 speech.text = result;
                 gptResponse = false;
             }
