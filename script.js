@@ -31,7 +31,8 @@ var stop = false;
 try {
     // check if SpeechRecognition is supported by the users browser
     if (('webkitSpeechRecognition' in window) || ('SpeechRecognition' in window)){
-      var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      //var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      var SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
       recognition = new SpeechRecognition();
       recognition.continuous = true;
       recognition.interimResults = false;
