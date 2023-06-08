@@ -1,8 +1,9 @@
 
 //var code = "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";
 var myTimeout;
-const data = window.message;
-console.log(window.message);
+var data = window.message;
+console.log("gpt1" + window.message);
+console.log("gpt2" + data);
 
 /*
 *Using OpenAI API to send user questions to gpt-3.5-turbo model and return answers.
