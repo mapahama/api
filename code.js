@@ -1,5 +1,5 @@
 
 import { code } from './config.js';
-
-window.message = import { code } from './config.js';
-console.log(window.message)
+console.log("code " + code);
+window.message = code;
+console.log("window message  " + window.message);
