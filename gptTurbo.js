@@ -8,10 +8,8 @@ var myTimeout;
 *@return: answer from gpt model
 */
 async function getGPTmessage(input) {
-  var data = window.message;
-  console.log("gpt1" + window.message);
-  console.log("gpt2" + data);
   
+  var data = window.message;  
   var result1 = null;
   const options = {
     method: 'POST',
