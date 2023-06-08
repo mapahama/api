@@ -1,7 +1,7 @@
 
-var code = "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";
+//var code = "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";
 var myTimeout;
-
+import API_KEY from "./apikey.js";
 
 /*
 *Using OpenAI API to send user questions to gpt-3.5-turbo model and return answers.
@@ -14,7 +14,7 @@ async function getGPTmessage(input) {
   const options = {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${code}`,
+      'Authorization': `Bearer ${API_KEY}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
