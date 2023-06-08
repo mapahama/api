@@ -1,5 +1,3 @@
-
-//var code = "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";
 var myTimeout;
 
 /*
