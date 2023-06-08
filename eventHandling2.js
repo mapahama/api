@@ -184,7 +184,7 @@ function handleSpeechRecognition(event) {
       
           setTimeout(function() {
           }, 1500); 
-     }
+      }
    }
 }
 
