@@ -167,21 +167,25 @@ speech.addEventListener('start', (event) => {
 */
 function handleSpeechRecognition(event) {
 
-  console.log("In function handleSpeechRecognition " + event);
+   console.log("In function handleSpeechRecognition " + event);
 
-  var transcript = event.results[event.resultIndex][0].transcript;
-  isSpeaking = synth.speaking;
+   //var transcript = event.results[event.resultIndex][0].transcript;
+   isSpeaking = synth.speaking;
   
-  if ((transcript.trim().length !== 0) && (!isSpeaking)){
-      messages_area.append(userMSg(transcript));
-      assistantMsg(transcript);
-  } else {
-      console.log("! null or interrupted: " + event.resultIndex);   
-      event.results[event.resultIndex][0].transcript = ''; 
+   if(!isSpeaking){
+      var transcript = event.results[event.resultIndex][0].transcript;
+     
+      if (transcript.trim().length !== 0){
+          messages_area.append(userMSg(transcript));
+          assistantMsg(transcript);
+      } else {
+          console.log("! null or interrupted: " + event.resultIndex);   
+          event.results[event.resultIndex][0].transcript = ''; 
       
-      setTimeout(function() {
-      }, 1500); 
-  }
+          setTimeout(function() {
+          }, 1500); 
+     }
+   }
 }
 
 // Handle beforeunload event to stop the speech synthesis when page is refreshed
