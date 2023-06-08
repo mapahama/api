@@ -1,6 +1,8 @@
 
 //var code = "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";
 var myTimeout;
+const data = window.message;
+console.log(data);
 
 /*
 *Using OpenAI API to send user questions to gpt-3.5-turbo model and return answers.
@@ -8,8 +10,6 @@ var myTimeout;
 *@return: answer from gpt model
 */
 async function getGPTmessage(input) {
-  const data = window.message;
-  console.log("data: " + data);
   
   var result1 = null;
   const options = {
