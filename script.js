@@ -21,6 +21,7 @@ var paperIDnumber = 0;
 var paperNumber = null;
 var paperTitle = "";
 var stop = false;
+var stopRecognitionWikiText = false;
 
 
 
@@ -383,11 +384,17 @@ function readLongText(text) {
     // Add an event listener to the first utterance to start the second one when it finishes
     firstUtterance.addEventListener("start", () => {
          recognition.removeEventListener('result', handleSpeechRecognition);
+         stopRecognitionWikiText = true;
+         recognition.stop();
     });
+    
     firstUtterance.addEventListener("end", () => {
         synth.speak(secondUtterance);
     });
+    
     secondUtterance.addEventListener("end", () => {
+        stopRecognitionWikiText = true;
+        recognition.start();
         recognition.addEventListener('result', handleSpeechRecognition);
     });
    
