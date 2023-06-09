@@ -90,7 +90,7 @@ recognition.onend = function() {
   console.log("In function recognition.onend");
   iteration = 0;
 
-  if(!stop){
+  if(!stop && !stopRecognitionWikiText){
     recognition.start();   
   }
 }
