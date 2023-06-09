@@ -393,7 +393,7 @@ function readLongText(text) {
     });
     
     secondUtterance.addEventListener("end", () => {
-        stopRecognitionWikiText = true;
+        stopRecognitionWikiText = false;
         recognition.start();
         recognition.addEventListener('result', handleSpeechRecognition);
     });
