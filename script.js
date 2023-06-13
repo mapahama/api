@@ -18,7 +18,6 @@ var synth = window.speechSynthesis;
 var speech = new SpeechSynthesisUtterance("");
 var gptResponse = false;
 var paperIDnumber = 0;
-var paperNumber = null;
 var paperTitle = "";
 var stop = false;
 var stopRecognitionWikiText = false;
@@ -221,8 +220,7 @@ function assistantMsg(msg){
                     .then(response => response.json())
                     .then(body => {
 
-                      //paperNumber = Math.floor(Math.random() * 10);
-                      paperNumber = 0;
+                      var paperNumber = Math.floor(Math.random() * 9);
                       console.log("paper array length: " + (body.data.length-1));
 
                       paperTitle = body.data[paperNumber].title;
