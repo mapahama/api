@@ -221,7 +221,8 @@ function assistantMsg(msg){
                     .then(response => response.json())
                     .then(body => {
 
-                      paperNumber = Math.floor(Math.random() * 10);
+                      //paperNumber = Math.floor(Math.random() * 10);
+                      paperNumber = 0;
                       console.log("paper array length: " + (body.data.length-1));
 
                       paperTitle = body.data[paperNumber].title;
