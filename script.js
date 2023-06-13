@@ -235,10 +235,10 @@ function assistantMsg(msg){
                       } else {
                           paperNumber = 0;
                       }
+                        
+                      resolve("fetchPromise resolved");
                     })
                     .catch(error => console.error(error));
-
-                    resolve("fetchPromise resolved");
                 });
                     
                 gptResponse = false;
