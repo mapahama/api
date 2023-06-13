@@ -202,16 +202,16 @@ function assistantMsg(msg){
                 gptResponse = false;
             }  
             // looking up for papers in SemanticScholar
-            else if (msg.toLowerCase().includes(('paper')) || msg.toLowerCase().includes(('people')) || msg.toLowerCase().includes(('paypal')))  {
+            else if (msg.toLowerCase().includes('paper') || msg.toLowerCase().includes('people') || msg.toLowerCase().includes('paypal'))  {
 
-                if(msg.toLowerCase().includes(('paper'))){
+                if(msg.toLowerCase().includes('paper')){
                     msg = msg.toLowerCase().replace("paper", "");
-                } 
-                else if(msg.toLowerCase().includes(('people'))){
+                } else if(msg.toLowerCase().includes('people')){
                     msg = msg.toLowerCase().replace("people", "");
                 } else {
                     msg = msg.toLowerCase().replace("paypal", "");
                 }
+
   
                let url = `https://api.semanticscholar.org/graph/v1/paper/search?query=${msg}`;
 
