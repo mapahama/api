@@ -18,6 +18,7 @@ var synth = window.speechSynthesis;
 var speech = new SpeechSynthesisUtterance("");
 var gptResponse = false;
 var paperIDnumber = 0;
+var paperNumber = 0;
 var paperTitle = "";
 var stop = false;
 var stopRecognitionWikiText = false;
@@ -219,8 +220,7 @@ function assistantMsg(msg){
                     fetch(url)
                     .then(response => response.json())
                     .then(body => {
-
-                      var paperNumber = Math.floor(Math.random() * 9);
+                        
                       console.log("paper array length: " + (body.data.length-1));
 
                       paperTitle = body.data[paperNumber].title;
@@ -229,6 +229,12 @@ function assistantMsg(msg){
                       console.log(paperTitle);
                       console.log("in " + paperIDnumber);
                       console.log(paperNumber);
+                      
+                      if(paperNumber <= 8){
+                          paperNumber++;
+                      } else {
+                          paperNumber = 0;
+                      }
                     })
                     .catch(error => console.error(error));
 
