@@ -12,6 +12,8 @@ maleBtn.addEventListener("click", function(e){
   currentBtn.classList.remove("inactive");
   currentBtn.classList.add("active");
 
+  defaultLang = synth.getVoices()[0].lang;
+  
   if(defaultLang !== "de-DE"){
     speech.voice = speechSynthesis.getVoices().filter(function(voice){
       return voice.name == 'Google UK English Male';
@@ -31,6 +33,8 @@ femaleBtn.addEventListener("click", function(e){
   currentBtn.classList.remove("inactive");
   currentBtn.classList.add("active");
 
+  defaultLang = synth.getVoices()[0].lang;
+  
   if(defaultLang !== "de-DE"){
     speech.voice = speechSynthesis.getVoices().filter(function(voice){
       return voice.name == 'Google UK English Female';
@@ -42,7 +46,7 @@ femaleBtn.addEventListener("click", function(e){
 * Handling event click on mic button and activating SpeechRecognition.
 */
 mic.addEventListener('click', () => {
-  
+  defaultLang = synth.getVoices()[0].lang;
   console.log("Default browser langiage is " + defaultLang);
   
   let appWakeWords ="";
