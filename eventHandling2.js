@@ -12,7 +12,7 @@ maleBtn.addEventListener("click", function(e){
   currentBtn.classList.remove("inactive");
   currentBtn.classList.add("active");
 
-  if(browserLanguage !== "de"){
+  if(defaultLang !== "de-DE"){
     speech.voice = speechSynthesis.getVoices().filter(function(voice){
       return voice.name == 'Google UK English Male';
   })[0];
@@ -31,7 +31,7 @@ femaleBtn.addEventListener("click", function(e){
   currentBtn.classList.remove("inactive");
   currentBtn.classList.add("active");
 
-  if(browserLanguage !== "de"){
+  if(defaultLang !== "de-DE"){
     speech.voice = speechSynthesis.getVoices().filter(function(voice){
       return voice.name == 'Google UK English Female';
   })[0];
