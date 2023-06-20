@@ -15,7 +15,7 @@ let wikiSummary = null;
 
 var synth = window.speechSynthesis;
 var speech = new SpeechSynthesisUtterance("");
-var defaultLang = null;
+var defaultLang = "";
 var gptResponse = false;
 var paperIDnumber = 0;
 var paperNumber = 0;
