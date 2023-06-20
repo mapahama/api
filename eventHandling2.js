@@ -47,7 +47,7 @@ mic.addEventListener('click', () => {
   
   let appWakeWords ="";
 
-  if(browserLanguage === "de"){
+  if(defaultLang === "de-DE"){
     appWakeWords =" Stellen Sie mir eine Frage! Ich kann zusätzlich dazu in Wikipedia und in Google suchen."+
     " Sagen Sie einfach das Schlüsselwort " + "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + "Google" + 
     "</span></b>" + " oder "+ "<b><span style='color: rgba(15, 14, 14, 0.782);'>" +  "Wikipedia" + 
