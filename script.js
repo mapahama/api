@@ -4,7 +4,6 @@ const chats = document.querySelector('.chats');
 const notchat = document.getElementById('notchat');
 const femaleBtn = document.querySelector(".female");
 const maleBtn = document.querySelector(".male");
-const defaultLang = window.speechSynthesis.getVoices()[0].lang;
 
 let iteration = 0;
 let recognition = null;
@@ -16,6 +15,7 @@ let wikiSummary = null;
 
 var synth = window.speechSynthesis;
 var speech = new SpeechSynthesisUtterance("");
+var defaultLang = null;
 var gptResponse = false;
 var paperIDnumber = 0;
 var paperNumber = 0;
@@ -99,7 +99,8 @@ function assistantMsg(msg){
     } else {
         
         if (msg.trim().length !== 0){
-
+            defaultLang = synth.getVoices()[0].lang;
+            
             if (msg.toLowerCase().includes('who are you') || msg.toLowerCase().includes('what is your name')) {
                 let result = intro[Math.floor(Math.random() * intro.length)]
                 speech.text = result;
