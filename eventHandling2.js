@@ -43,7 +43,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   
-  console.log("In function mic addEventListener click  Test24");
+  console.log("Default browser langiage is " + defaultLang);
   
   let appWakeWords ="";
 
