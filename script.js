@@ -99,7 +99,6 @@ function assistantMsg(msg){
     } else {
         
         if (msg.trim().length !== 0){
-            defaultLang = synth.getVoices()[0].lang;
             
             if (msg.toLowerCase().includes('who are you') || msg.toLowerCase().includes('what is your name')) {
                 let result = intro[Math.floor(Math.random() * intro.length)]
