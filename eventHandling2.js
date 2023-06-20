@@ -47,7 +47,7 @@ femaleBtn.addEventListener("click", function(e){
 */
 mic.addEventListener('click', () => {
   defaultLang = synth.getVoices()[0].lang;
-  console.log("Default browser langiage is " + defaultLang);
+  console.log("Default browser language is " + defaultLang);
   
   let appWakeWords ="";
 
