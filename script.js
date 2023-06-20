@@ -4,7 +4,7 @@ const chats = document.querySelector('.chats');
 const notchat = document.getElementById('notchat');
 const femaleBtn = document.querySelector(".female");
 const maleBtn = document.querySelector(".male");
-const browserLanguage = navigator.language || navigator.userLanguage;
+const defaultLang = window.speechSynthesis.getVoices()[0].lang;
 
 let iteration = 0;
 let recognition = null;
@@ -86,10 +86,6 @@ function assistantSpeak(msg){
 */
 function assistantMsg(msg){
     
-    // setting up assistants voice
-    if(browserLanguage === "de"){
-        speech.lang = "de-DE";
-    }
     speech.text = "";
     speech.volume = 1;
     speech.pitch = 0.9;
@@ -115,7 +111,7 @@ function assistantMsg(msg){
                 gptResponse = false;
             }
             else if (msg.toLowerCase().includes('yes') || msg.toLowerCase().includes('yes please') ||
-                    (msg.toLowerCase().includes('ja') && browserLanguage === "de")) {
+                    (msg.toLowerCase().includes('ja') && defaultLang === "de-DE")) {
                // myTimer();
                 messages_area.append(assistantSpeak(wikiSummary));
                 readLongText(wikiSummary);
@@ -136,7 +132,7 @@ function assistantMsg(msg){
             }
             else if ((msg.toLowerCase().includes('no') && msg.toLowerCase().length <= 3) || (msg.toLowerCase().includes('nein'))) {
 
-                if(browserLanguage === "de"){
+                if(defaultLang === "de-DE"){
                     speech.text = "wie Sie möchten"; 
                 } else {
                     speech.text = "as you wish"; 
@@ -145,7 +141,7 @@ function assistantMsg(msg){
             } 
             else if (msg.toLowerCase().includes('okay stop')|| msg.toLowerCase().includes('ok stop')) {
 
-                if(browserLanguage === "de"){
+                if(defaultLang === "de-DE"){
                     speech.text = "API wird ausgeschaltet...";  
                 } else {
                     speech.text = "API is turning off...";  
@@ -165,7 +161,7 @@ function assistantMsg(msg){
                 window.open(`https://en.wikipedia.org/wiki/${msg.toLowerCase().replace("wikipedia", "")}`, "_blank");
 
                 var result = "";
-                if(browserLanguage === "de"){
+                if(defaultLang === "de-DE"){
                     result = "Ich zeige Ihnen Information über  " + msg.toLowerCase().replace("wikipedia", "") + " in Wikipedia";
                 } else {
                     result = "showing result for " + msg.toLowerCase().replace("wikipedia", "") + " on wikipedia";
@@ -190,7 +186,7 @@ function assistantMsg(msg){
                 // the word Paris is taken into account
                 msg = msg.toLowerCase().replace("google", "")
     
-                if(browserLanguage === "de"){
+                if(defaultLang === "de-DE"){
                     result = "Ich habe etwas über " + msg + " in Google gefunden";
                     speech.text = result;
                 } else {
@@ -261,7 +257,7 @@ function assistantMsg(msg){
 
                         setTimeout(function() {
 
-                            if(browserLanguage === "de"){
+                            if(defaultLang === "de-DE"){
                                 result = "Ich habe einen Artikel über  " + msg + " mit dem folgenden Titel gefunden: " + 
                                 "<b><span style='color: rgba(15, 14, 14, 0.782);'>" + paperTitle + "</span></b>"
                             } else {
@@ -322,28 +318,28 @@ function assistantMsg(msg){
     let hour = day.getHours();
 
     if(hour >= 0  && hour < 12){
-        if(browserLanguage === "de"){
+        if(defaultLang === "de-DE"){
             salute = "Guten Morgen!"
         } else {
             salute = "Good morning!";
         }
 
     } else if(hour == 12){
-        if(browserLanguage === "de"){
+        if(defaultLang === "de-DE"){
             salute = "Guten Tag!"
         } else {
             salute = "Good noon!";
         }
 
     } else if(hour > 12  && hour <= 17){
-        if(browserLanguage === "de"){
+        if(defaultLang === "de-DE"){
             salute = "Guten Tag!"
         } else {
             salute = "Good afternoon!";
         }
 
     } else {
-        if(browserLanguage === "de"){
+        if(defaultLang === "de-DE"){
             salute = "Guten Abend!"
         } else {
             salute = "Good evening!";
