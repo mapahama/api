@@ -19,7 +19,7 @@ async function askForWikiSummary(wordUrl1){
         wikiSummary = extract;
         var  ifMoreInfoNeeded = "";
 
-        if(browserLanguage === "de"){
+        if(defaultLang === "de-DE"){
           ifMoreInfoNeeded = "soll ich den Artikel vorlesen?";
         } else {
           ifMoreInfoNeeded = "would you like to read the information for you?";
@@ -30,7 +30,7 @@ async function askForWikiSummary(wordUrl1){
         synth.speak(speech);        
       } else {
 
-        if(browserLanguage === "de"){
+        if(defaultLang === "de-DE"){
           wikiSummary ="Leider habe ich keinen Artikel zum Thema gefunden";
         } else {
           wikiSummary ="Sorry, I did not find information";
