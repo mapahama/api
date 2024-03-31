@@ -1,5 +1,5 @@
 var myTimeout;
-
+const data = "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";
 /*
 *Using OpenAI API to send user questions to gpt-3.5-turbo model and return answers.
 *@param input:  user question
