@@ -6,8 +6,7 @@ var myTimeout;
 */
 async function getGPTmessage(input) {
   
-  //var data = window.message;  
-  var data = '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';
+  var data = window.message;  
   var result1 = null;
   const options = {
     method: 'POST',
